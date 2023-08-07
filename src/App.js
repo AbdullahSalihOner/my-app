@@ -1,15 +1,18 @@
+import { Container } from 'semantic-ui-react';
 import './App.css';
-import Categories from './components/Categories';
-import ProductPage from './components/ProductsPage';
 import Dashboard from './layouts/Dashboard';
+import 'semantic-ui-css/semantic.min.css'
+import Navi from './layouts/Navi';
 
 function App() {
   return (
     <div className="App">
-      <h1>Product Page</h1>
-      <Dashboard />
-     <ProductPage />
-     <Categories />
+      <Navi/>
+      <Container className='main'>
+        <Dashboard />
+      </Container>
+    
+    
     </div>
   );
 }
