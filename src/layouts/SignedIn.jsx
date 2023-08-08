@@ -9,6 +9,7 @@ export default function SignedIn(props) {
                 <Dropdown pointing="top left" text="Arda">
                     <Dropdown.Menu>
                         <Dropdown.Item text="Bilgilerim" icon="info"/>
+                        <Dropdown.Item text="İstek Listem" icon="info"/>
                         <Dropdown.Item onClick={props.signOut} text="Çıkış Yap" icon="sign-out"/>
                     </Dropdown.Menu>
                 </Dropdown>

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Button, Icon, Image, Menu, Table } from "semantic-ui-react";
 import { ProductService } from "../services/productService";
+import { Link } from "react-router-dom/cjs/react-router-dom";
 
 export default function ProductList() {
   const [products, setProducts] = useState([]);
@@ -26,8 +27,8 @@ export default function ProductList() {
         <Table.Body>
           {products?.map((product) => (
             <Table.Row key={product.id}>
-              <Table.Cell><img src={`${product.imageURL}`} style={{ maxWidth: '150px', height: 'auto' }}  alt="Gorsel" /></Table.Cell>
-              <Table.Cell>{product.name}</Table.Cell>
+              <Table.Cell><Link to={`/products/${product.id}`}><img src={`${product.imageURL}`} style={{ maxWidth: '150px', height: 'auto' }}  alt="Gorsel" /></Link></Table.Cell>
+              <Table.Cell><Link to={`/products/${product.id}`}>{product.name}</Link></Table.Cell>
               <Table.Cell>{product.price}</Table.Cell>
               <Table.Cell>{product.description}</Table.Cell>
               <Table.Cell><Button>Sepete Ekle</Button></Table.Cell>
