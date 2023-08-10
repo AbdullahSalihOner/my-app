@@ -35,6 +35,8 @@ export default function ProductDetail() {
           </Card.Content>
         </Card>
       </Card.Group>
+
+      
     </div>
   );
 }

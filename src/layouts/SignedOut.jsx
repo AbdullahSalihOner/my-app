@@ -1,13 +1,11 @@
 import React from "react";
+import { NavLink } from "react-router-dom/cjs/react-router-dom";
 import { Button } from "semantic-ui-react";
 
 export default function SignedOut(props) {
   return (
     <div>
-      <Button onClick={props.signIn} primary>Giriş yap</Button>
-      <Button primary style={{ marginLeft: "0.5em" }}>
-        Kayıt Ol
-      </Button>
+      <Button as={NavLink} to="/login" onClick={props.signIn} primary>Giriş yap</Button>
     </div>
   );
 }

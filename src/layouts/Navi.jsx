@@ -4,6 +4,7 @@ import {  Container, Menu } from "semantic-ui-react";
 import SignedOut from "./SignedOut";
 import SignedIn from "./SignedIn";
 import { useHistory } from "react-router-dom/cjs/react-router-dom";
+import Categories from "./Categories";
 
 export default function Navi() {
   const [isAuthenticated, setIsAuthenticated] = useState(true)
@@ -21,8 +22,8 @@ export default function Navi() {
     <div>
       <Menu inverted fixed="top">
         <Container>
-          <Menu.Item name="home" />
-          <Menu.Item name="messages" />
+          <Menu.Item href="/" name="Anasayfa" />
+          <Categories/>
 
           <Menu.Menu position="right">
               <CartSummary />
