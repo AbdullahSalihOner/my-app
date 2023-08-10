@@ -15,6 +15,7 @@ import About from "../pages/About";
 import Navi from "./Navi";
 import Footer from "./Footer";
 import Payment from "../pages/Payment";
+import AdminPanel from "../pages/AdminPanel";
 
 export default function Dashboard() {
   return (
@@ -44,6 +45,7 @@ export default function Dashboard() {
 
             <Route path="/payment" component={Payment} />
 
+            <Route path="/admin" component={AdminPanel} />
 
 
 

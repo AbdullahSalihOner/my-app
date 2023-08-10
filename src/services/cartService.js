@@ -5,9 +5,10 @@ export class  CartService {
         return axios.get("http://localhost:8080/cart/?token="+token);
     }//Çağırdığım yerde localdeki tokenı gönderiyorum
     addToCart(token,CartDto) {
-        return axios.post("http://localhost:8080/cart/add" + "?token="+token,
+        return axios.post("http://localhost:8080/cart/add?token="+token,
         {
-            CartDto: CartDto,
+            productId: CartDto.id,
+            quantity:1,
         });
     }
     deleteFromCart(id,token) {

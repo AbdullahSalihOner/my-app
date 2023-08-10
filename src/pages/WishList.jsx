@@ -14,7 +14,7 @@ function Wishlist() {
       setCartItems(prevCartItems => [...prevCartItems, item]);
       handleRemoveItem(item.id);
     };
-  
+    
     return (
       <div className="container">
         <h2>İstek Listesi</h2>

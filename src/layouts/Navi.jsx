@@ -21,14 +21,17 @@ export default function Navi() {
   return (
     <div>
       <Menu inverted fixed="top">
+      <Menu.Item href="/" name="DDOYOL" style={{ fontWeight: 'bold', fontSize: '15px' }} />
+       {/* Marka Adı eklendi */}
         <Container>
+        
           <Menu.Item href="/" name="Anasayfa" />
           <Categories/>
 
           <Menu.Menu position="right">
               <CartSummary />
               
-              {isAuthenticated?<SignedIn signOut={handleSignOut} bisey="1"/>
+              {isAuthenticated?<SignedIn signOut={handleSignOut} bisey="1" />
             :<SignedOut signIn={handleSignIn}/>} 
 
           </Menu.Menu>
