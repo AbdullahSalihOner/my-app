@@ -23,8 +23,15 @@ export class UserService {
     deleteUser(id) {
         return axios.delete("http://localhost:8080/user/delete/"+id);
     }
-    updateUser(id) {  
-        return axios.put("http://localhost:8080/user/update/"+ id);
+    updateUser(id,user) {  
+        return axios.put("http://localhost:8080/user/update/"+ id,{
+            id:0,
+            email : user.email,
+            firstName:user.firstName,
+            lastName:user.lastName,
+            password:user.password,
+            role:"member"
+        });
     }
     addUser(user) {
         return axios.post("http://localhost:8080/user/add/",+ user);

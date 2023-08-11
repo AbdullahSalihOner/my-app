@@ -3,10 +3,18 @@ import { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom/cjs/react-router-dom";
 import { Button, Dropdown } from "semantic-ui-react";
 import CartService from "../services/cartService";
+import { useHistory } from 'react-router-dom';
 
 export default function CartSummary() {
   const token = localStorage.getItem("token");
   const [products, setProducts] = useState([]);
+  const history = useHistory();
+
+  
+  const redirectToProduct = (productId) => {
+    history.push(`/products/${productId}`);
+  };
+  
 
   const getCart = async() => {
 
@@ -23,7 +31,7 @@ export default function CartSummary() {
       <Dropdown item text="Sepet">
       <Dropdown.Menu>
         {products.map((product) => (
-          <Dropdown.Item key={product.product.id}>
+          <Dropdown.Item key={product.product.id} onClick={() => redirectToProduct(product.product.id)}>
             <div style={{ display: 'flex', alignItems: 'center' }}>
               <img
                 src={product.product.imageURL}

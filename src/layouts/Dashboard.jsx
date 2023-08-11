@@ -1,7 +1,7 @@
 import React from "react";
 import ProductList from "../pages/ProductList";
-import Categories from "./Categories";
-import { Grid } from "semantic-ui-react";
+import Categories from "./CategoriesNavi";
+import { Grid, GridColumn } from "semantic-ui-react";
 import { Route } from "react-router";
 import ProductDetail from "../pages/ProductDetail";
 import CartDetail from "../pages/CartDetail";
@@ -16,6 +16,10 @@ import Navi from "./Navi";
 import Footer from "./Footer";
 import Payment from "../pages/Payment";
 import AdminPanel from "../pages/AdminPanel";
+import ProductAdmin from "../pages/ProductAdmin";
+import UserAdmin from "../pages/UserAdmin";
+import CategoryAdmin from "../pages/CategoryAdmin";
+import CategoriesMain from "./CategoriesMain";
 
 export default function Dashboard() {
   return (
@@ -24,6 +28,9 @@ export default function Dashboard() {
       <Grid>
         <Grid.Row>
           <Navi/>
+          <GridColumn width={0}>
+            {/* <CategoriesMain /> */}
+          </GridColumn>
           <Grid.Column width={16}>
             <Route exact path="/" component={ProductList} />
             <Route exact path="/products" component={ProductList} />
@@ -45,7 +52,11 @@ export default function Dashboard() {
 
             <Route path="/payment" component={Payment} />
 
-            <Route path="/admin" component={AdminPanel} />
+            <Route exact path="/admin" component={AdminPanel} />
+            <Route path="/admin/product" component={ProductAdmin}/>
+            <Route path="/admin/user" component={UserAdmin}/>
+            <Route path="/admin/category" component={CategoryAdmin}/>
+
 
 
 

@@ -4,7 +4,7 @@ import {  Container, Menu } from "semantic-ui-react";
 import SignedOut from "./SignedOut";
 import SignedIn from "./SignedIn";
 import { useHistory } from "react-router-dom/cjs/react-router-dom";
-import Categories from "./Categories";
+import Categories from "./CategoriesNavi";
 
 export default function Navi() {
   const [isAuthenticated, setIsAuthenticated] = useState(true)
@@ -17,6 +17,7 @@ export default function Navi() {
 
   function handleSignIn() {
     setIsAuthenticated(true)
+    localStorage.removeItem('token');
   }
   return (
     <div>

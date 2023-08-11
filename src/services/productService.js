@@ -15,8 +15,15 @@ export class ProductService {
     deleteProduct(id) {
         return axios.delete("http://localhost:8080/product/delete/"+id);
     }
-    updateProduct(id) {
-        return axios.put("http://localhost:8080/product/update/",+id);
+    updateProduct(id,productDto) {
+        return axios.put("http://localhost:8080/product/update/",+id,{
+            categoryId:productDto.categoryId,
+            description:productDto.description,
+            id:0,
+            imageURL:productDto.imageURL,
+            name:productDto.name,
+            price:productDto.price
+        });
     }
 
 }
