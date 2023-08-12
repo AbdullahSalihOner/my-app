@@ -15,6 +15,7 @@ export default function UserAdmin() {
       const userService = new UserService();
       const response = await userService.getUsers();
       setUsers(response.data);
+      console.log(response.data);
     } catch (error) {
       console.error("Error fetching users:", error);
     }

@@ -27,11 +27,12 @@ export default function Dashboard() {
       <ToastContainer position="bottom-right"  />
       <Grid>
         <Grid.Row>
-          <Navi/>
+        <Navi/>
           <GridColumn width={0}>
             {/* <CategoriesMain /> */}
           </GridColumn>
           <Grid.Column width={16}>
+          
             <Route exact path="/" component={ProductList} />
             <Route exact path="/products" component={ProductList} />
             <Route path="/products/:id" component={ProductDetail} />

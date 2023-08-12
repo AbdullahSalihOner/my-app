@@ -5,44 +5,45 @@ import { UserService } from "../services/userService";
 // import { useNavigate } from 'react-router-dom'
 
 export default function LoginPage() {
-
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [errorMessage, setErrorMessage] = useState(""); // Hata mesajını saklamak için state
+  const [users, setUsers] = useState([]);
   const history = useHistory();
 
-  const user1 = {
-    email:email,
-    password:password
-  }
   const handleSignIn = async (e) => {
-    
     e.preventDefault();
 
     try {
       let userService = new UserService();
-      const result = await userService.signIn(user1); 
-      localStorage.setItem("id",result.data.userId)
-      console.log(result); 
-      
-      
+      const result = await userService.signIn({ email, password }); // Kısa yol
+
+      localStorage.setItem("id", result.data.userId);
+
       if (result.data.status === "success") {
-        
-        history.push('/login'); 
+        history.push('/'); // Ana sayfaya yönlendir
+        window.location.reload();
+      } else {
+        setErrorMessage("Bilgiler yanlış"); // Hata mesajını ayarla
       }
     } catch (error) {
       console.log(error);
     }
   };
-  // useEffect(()=>{
-  //   loginSubmit()
-  // },[])
+
+
+  const fetchUsers = async () => {
+    try {
+      const userService = new UserService();
+      const response = await userService.getUsers();
+      setUsers(response.data);
+      console.log(response.data);
+    } catch (error) {
+      console.error("Error fetching users:", error);
+    }
+  };
+
   return (
-   
-
-
-
-
-
     <div className="d-flex justify-content-center align-items-center vh-100">
       <Card style={{ width: '300px' }}>
         <Image src="https://www.computerhope.com/jargon/g/guest-user.png" wrapped ui={false} style={{ maxWidth: '100%', height: 'auto' }} />
@@ -67,10 +68,11 @@ export default function LoginPage() {
             <Form.Field>
               <Checkbox label="Kullanım Koşullarını kabul ediyorum" />
             </Form.Field>
-            <Button type="submit" color="blue"  fluid>
+            <Button type="submit" color="blue" fluid>
               Giriş Yap
             </Button>
           </Form>
+          {errorMessage && <p style={{ color: "red", textAlign: "center" }}>{errorMessage}</p>}
           <Button href="/signup" color="green" fluid>
             Kayıt olmak İçin Tıklayın
           </Button>
