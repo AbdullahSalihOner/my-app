@@ -2,17 +2,17 @@ import React, { useEffect } from "react";
 import WishListService from "../services/wishListService";
 import { useState } from "react";
 import CartService from "../services/cartService";
-import { ProductService } from "../services/productService";
 
-export default function WishListDeatil({ item, onRemove, onAddToCart }) {
-  const token = localStorage.getItem("token");
+export default function WishListDeatil() {
   const [items, setItems] = useState([]);
-  const [products, setProducts] = useState([]);
+
+
+  const UserId = localStorage.getItem("id");
 
   const getWishList = async () => {
     let wishListService = new WishListService();
     await wishListService
-      .getWishList(token)
+      .getWishList(UserId)
       .then((result) => setItems(result.data));
   };
 
@@ -28,7 +28,7 @@ export default function WishListDeatil({ item, onRemove, onAddToCart }) {
     );
     let wishListService = new WishListService();
     await wishListService
-      .deleteWishList(wishListId, token)
+      .deleteWishList(wishListId, UserId)
       .then((result) => setItems(updatedWishList));
   };
 
@@ -36,7 +36,7 @@ export default function WishListDeatil({ item, onRemove, onAddToCart }) {
       
     let cartService = new CartService();
     await cartService
-      .addToCart(token,items)
+      .addToCart(items,UserId)
       .then((result) =>console.log(result) );
   };
       

@@ -8,20 +8,20 @@ import WishListService from "../services/wishListService";
 export default function ProductDetail() {
   let { id } = useParams();
 
-  const token = localStorage.getItem("token");
+  const UserId = localStorage.getItem("id");
   const [product, setProduct] = useState([]);
   const addProductToCart = async (items) => {
       
     let cartService = new CartService();
     await cartService
-      .addToCart(token,items)
+      .addToCart(items,UserId)
       .then((result) =>console.log(result) );
   };
      
   const addProductToWishList = async (product) => {
      let wishListService = new WishListService();
      await wishListService
-     .addWishList(product,token)
+     .addWishList(product,UserId)
      .then((result)=> console.log(result));
   }
 

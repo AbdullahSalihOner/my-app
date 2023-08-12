@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import { UserService } from "../services/userService";
-import { Button, Card, Checkbox, Form, Image } from "semantic-ui-react";
+
+import { Button, Card, Checkbox, Form } from "semantic-ui-react";
 import { useHistory } from "react-router-dom/cjs/react-router-dom";
+import { UserService } from "../services/userService";
 
 
 export default function SignupPage() {
@@ -25,8 +26,7 @@ export default function SignupPage() {
       const result = await userService.signUp(user); 
       
       console.log(result); 
-      console.log(result);
-      console.log(result);
+      
       
       if (result.data.status === "success") {
         

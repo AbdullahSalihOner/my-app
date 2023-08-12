@@ -14,7 +14,6 @@ export class UserService {
         });
     }
     signIn(user) {
-        console.log(user);
         return axios.post("http://localhost:8080/user/login",{
             email: user.email,
             password: user.password
@@ -34,7 +33,14 @@ export class UserService {
         });
     }
     addUser(user) {
-        return axios.post("http://localhost:8080/user/add/",+ user);
+        return axios.post("http://localhost:8080/user/add/",{
+            email:user.email,
+            firstName:user.firstName,
+            lastName:user.lastName,
+            password:user.password,
+            role:user.role,
+            id:0
+        });
     }
     
 

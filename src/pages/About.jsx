@@ -28,6 +28,7 @@ export default function About() {
           <div className="mb-3">
             <label htmlFor="email" style={{ marginBottom: '5px', display: 'block' }}>Email</label>
             <input
+            
               type="email"
               className="form-control"
               id="email"

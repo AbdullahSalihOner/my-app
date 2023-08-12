@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import { Button, Dropdown, Menu } from 'semantic-ui-react'
+import { Dropdown} from 'semantic-ui-react'
 import { CategoryService } from '../services/categoryService';
-import { NavLink } from 'react-router-dom/cjs/react-router-dom';
+
 
 export default function Categories() {
 

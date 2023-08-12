@@ -1,19 +1,21 @@
 import React from "react";
-import { Table } from "react-bootstrap";
 import "./style.css";
 import { useState } from "react";
 import { useEffect } from "react";
 import CartService from "../services/cartService";
+import { useHistory } from "react-router-dom";
 
 export default function CartDetail() {
-  const token = localStorage.getItem("token");
+  const UserId = localStorage.getItem("id");
   const [products, setProducts] = useState([]);
 
+  const history = useHistory();
+
   const getCart = async () => {
-    console.log(token);
+    console.log(UserId);
     let cartService = new CartService();
     await cartService
-      .getCart(token)
+      .getCart(UserId)
       .then((result) => setProducts(result.data.cartItems));
   };
   useEffect(() => {
@@ -26,7 +28,7 @@ export default function CartDetail() {
     );
     let cartService = new CartService();
     await cartService
-      .deleteFromCart(productId, token)
+      .deleteFromCart(productId, UserId)
       .then((result) => setProducts(updatedProducts));
   };
 
@@ -40,7 +42,7 @@ export default function CartDetail() {
     });
     let cartService = new CartService();
     await cartService
-      .updateCart(productId, token)
+      .updateCart(productId, UserId)
       .then((result) => setProducts(updatedProducts));
   };
 
@@ -53,6 +55,7 @@ export default function CartDetail() {
 
   const handlePayment = () => {
     // Ödeme işlemleri burada gerçekleştirilebilir
+    history.push('/login'); 
     console.log("Ödeme yapıldı.");
   };
 

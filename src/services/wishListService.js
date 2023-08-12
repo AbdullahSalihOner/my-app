@@ -1,13 +1,13 @@
 import axios from "axios";
 
 export class WishListService {
-  getWishList(token) {
-    return axios.get("http://localhost:8080/wishlist/" + token);
-  } //Çağırdığım yerde localdeki tokenı gönderiyorum
+  getWishList(UserId) {
+    return axios.get("http://localhost:8080/wishlist/{UserId}?UserId=" + UserId);
+  } 
 
-  addWishList(ProductDto, token) {
+  addWishList(ProductDto, UserId) {
     return axios.post(
-      "http://localhost:8080/wishlist/add" + "?token=" + token,
+      "http://localhost:8080/wishlist/add?UserId=" + UserId,
       {
         categoryId: ProductDto.categoryId,
         description: ProductDto.description,
@@ -18,9 +18,9 @@ export class WishListService {
       }
     );
   }
-  deleteWishList(id, token) {
+  deleteWishList(wishListId, UserId) {
     return axios.delete(
-      "http://localhost:8080/wishlist/delete/" + id + "?token=" + token
+      "http://localhost:8080/wishlist/delete/" + wishListId + "?UserId=" + UserId
     );
   }
 }

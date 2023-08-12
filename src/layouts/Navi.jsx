@@ -17,7 +17,7 @@ export default function Navi() {
 
   function handleSignIn() {
     setIsAuthenticated(true)
-    localStorage.removeItem('token');
+    
   }
   return (
     <div>

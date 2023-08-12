@@ -1,10 +1,9 @@
 import axios from "axios";
 
 export class OrderService {
-    getOrders(token) {
-        return axios.get("http://localhost:8080/order/"+token)
-    }//Çağırdığım yerde localdeki tokenı gönderiyorum
-    
+    getOrders(userId) {
+        return axios.get("http://localhost:8080/order/?UserId"+userId)
+    }
     addOrder(orderDto) {
         return axios.post("http://localhost:8080/order/add",
         {

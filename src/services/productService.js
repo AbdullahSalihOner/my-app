@@ -10,10 +10,17 @@ export class ProductService {
     }
     
     addProduct(product) {
-        return axios.post("http://localhost:8080/product/add/",+ product);
+        return axios.post("http://localhost:8080/product/add/",{
+            categoryId:product.categoryId,
+            description:product.description,
+            imageURL:product.imageURL,
+            name:product.name,
+            price:product.price,
+            id:0
+        });
     }
-    deleteProduct(id) {
-        return axios.delete("http://localhost:8080/product/delete/"+id);
+    deleteProduct(productId) {
+        return axios.delete("http://localhost:8080/product/delete/"+productId);
     }
     updateProduct(id,productDto) {
         return axios.put("http://localhost:8080/product/update/",+id,{

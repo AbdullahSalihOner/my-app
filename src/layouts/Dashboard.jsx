@@ -10,16 +10,16 @@ import ProductAdd from "../pages/ProductAdd";
 import ProductUpdate from "../pages/ProductUpdate";
 import LoginPage from "../pages/LoginPage";
 import SignupPage from "../pages/SignupPage";
-import WishListDeatil from "../pages/WishListDeatil";
+import WishListPage from "../pages/WishListPage";
 import About from "../pages/About";
 import Navi from "./Navi";
-import Footer from "./Footer";
 import Payment from "../pages/Payment";
 import AdminPanel from "../pages/AdminPanel";
-import ProductAdmin from "../pages/ProductAdmin";
-import UserAdmin from "../pages/UserAdmin";
-import CategoryAdmin from "../pages/CategoryAdmin";
-import CategoriesMain from "./CategoriesMain";
+import ProductAdminPage from "../pages/ProductAdminPage";
+import UserAdminPage from "../pages/UserAdminPage";
+import CategoryAdminPage from "../pages/CategoryAdminPage";
+
+
 
 export default function Dashboard() {
   return (
@@ -45,7 +45,7 @@ export default function Dashboard() {
             <Route path="/login" component={LoginPage} />
             <Route path="/signup" component={SignupPage} />
 
-            <Route path="/wishlist" component={WishListDeatil}/>
+            <Route path="/wishlist" component={WishListPage}/>
 
 
             <Route path="/about" component={About}/>
@@ -53,9 +53,9 @@ export default function Dashboard() {
             <Route path="/payment" component={Payment} />
 
             <Route exact path="/admin" component={AdminPanel} />
-            <Route path="/admin/product" component={ProductAdmin}/>
-            <Route path="/admin/user" component={UserAdmin}/>
-            <Route path="/admin/category" component={CategoryAdmin}/>
+            <Route path="/admin/product" component={ProductAdminPage}/>
+            <Route path="/admin/user" component={UserAdminPage}/>
+            <Route path="/admin/category" component={CategoryAdminPage}/>
 
 
 

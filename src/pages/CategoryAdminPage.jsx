@@ -76,7 +76,7 @@ export default function CategoryAdmin() {
               >
                 {category.categoryName}
                 <div>
-                  <button className="btn btn-danger me-2">Sil</button>
+                  <button className="btn btn-danger me-2" onClick={()=>deleteCategory(category.id)}>Sil</button>
                   <button className="btn btn-warning">Güncelle</button>
                 </div>
               </li>

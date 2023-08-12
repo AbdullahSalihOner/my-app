@@ -1,8 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Button, Icon, Image, Menu, Table } from "semantic-ui-react";
 import { ProductService } from "../services/productService";
-import { Link } from "react-router-dom/cjs/react-router-dom";
-import { Card } from "react-bootstrap";
 import CartService from "../services/cartService";
 import { Grid } from "semantic-ui-react";
 import WishListService from "../services/wishListService";
@@ -11,20 +8,22 @@ import { useHistory } from 'react-router-dom';
 export default function ProductList() {
   const [products, setProducts] = useState([]);
   const history = useHistory();
-  const token = localStorage.getItem("token");
+
+
+  const UserId = localStorage.getItem("id");
 
   const addProductToCart = async (items) => {
       
     let cartService = new CartService();
     await cartService
-      .addToCart(token,items)
+      .addToCart(UserId,items)
       .then((result) =>console.log(result) );
   };
      
   const addProductToWishList = async (product) => {
      let wishListService = new WishListService();
      await wishListService
-     .addWishList(product,token)
+     .addWishList(product,UserId)
      .then((result)=> console.log(result));
   }
 
