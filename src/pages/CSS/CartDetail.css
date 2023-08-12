@@ -1,0 +1,58 @@
+/* styles.css */
+
+.container {
+  margin-top: 5rem;
+}
+
+.card-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.card-image {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  margin-right: 1rem;
+}
+
+.card-details {
+  margin-left: 1rem;
+}
+
+.card-name {
+  font-size: 1.2rem;
+  margin-bottom: 0.2rem;
+}
+
+.card-price {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 0.5rem;
+}
+
+.input-group {
+  margin-top: 0.5rem;
+}
+
+.btn-quantity {
+  margin: 0 0.3rem;
+}
+
+.btn-danger {
+  margin-top: 0.5rem;
+}
+
+.card-total {
+  margin-top: 2rem;
+}
+
+.total-price {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.btn-payment {
+  margin-top: 1rem;
+}

@@ -4,6 +4,10 @@ export class UserService {
     getUsers() {
         return axios.get("http://localhost:8080/user/");
     }
+
+    getUserById(id) {
+        return axios.get("http://localhost:8080/user/"+id);
+    }
     
     signUp(user) {
         return axios.post("http://localhost:8080/user/signup/", {

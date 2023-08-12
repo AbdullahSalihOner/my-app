@@ -1,0 +1,65 @@
+/* styles.css */
+
+.dropdown-content {
+    max-width: 300px;
+  }
+  
+  .product-item {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    cursor: pointer;
+  }
+  
+  .product-image {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+    margin-right: 10px;
+  }
+  
+  .empty-cart {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+  }
+  
+  .button-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 10px;
+  }
+  
+
+  /* Modal stil ayarları */
+.custom-modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  border-radius: 10px;
+  padding: 20px;
+  max-width: 400px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.modal-title {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.modal-content {
+  text-align: center;
+}
+
+.modal-button {
+  display: block;
+  margin: 0 auto;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}

@@ -24,7 +24,7 @@ import CategoryAdminPage from "../pages/CategoryAdminPage";
 export default function Dashboard() {
   return (
     <div>
-      <ToastContainer position="bottom-right"/>
+      <ToastContainer position="bottom-right"  />
       <Grid>
         <Grid.Row>
           <Navi/>

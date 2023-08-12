@@ -1,0 +1,40 @@
+/* Stil dosyası örneği */
+
+.custom-menu {
+    background-color: #222; /* Menü arkaplan rengi */
+    border-bottom: 2px solid #ff5722; /* Alt çizgi rengi */
+  }
+  
+  .custom-menu .item {
+    font-weight: bold;
+    font-size: 15px;
+  }
+  
+  .custom-menu a {
+    color: white;
+  }
+  
+  .custom-menu a:hover {
+    color: #ff5722; /* Hover rengi */
+  }
+  
+  .custom-menu .right.menu {
+    align-items: center;
+  }
+  
+  .custom-menu .right.menu > .item {
+    margin-right: 20px;
+  }
+  
+  .custom-menu .ui.dropdown.item .menu {
+    background-color: #333; /* Açılır menü arkaplan rengi */
+  }
+  
+  .custom-menu .ui.dropdown.item .menu .item {
+    color: white;
+  }
+  
+  .custom-menu .ui.dropdown.item .menu .item:hover {
+    background-color: #444; /* Açılır menü öğesi hover rengi */
+  }
+  

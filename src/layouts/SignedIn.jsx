@@ -1,8 +1,24 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { NavLink } from 'react-router-dom/cjs/react-router-dom'
 import { Dropdown, Image, Menu } from 'semantic-ui-react'
+import { UserService } from '../services/userService';
 
 export default function SignedIn(props) {
+    const [users, setUsers] = useState([]);
+
+    const UserId = localStorage.getItem("id");
+
+    const fetchUsers = async () => {
+        try {
+          const userService = new UserService();
+          const response = await userService.getUserById(UserId);
+          setUsers(response.data);
+        } catch (error) {
+          console.error("Error fetching users:", error);
+          console.log("Kullanıcı Bulunamadı");
+        }
+      };
+
   return (
     <div>
             <Menu.Item>

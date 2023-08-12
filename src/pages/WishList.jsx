@@ -19,7 +19,7 @@ function Wishlist() {
       <div className="container">
         <h2>İstek Listesi</h2>
         {wishlistItems.length === 0 ? (
-          <p>İstek listeniz boş.</p>
+          <h1>İstek listeniz boş.</h1>
         ) : (
           wishlistItems.map(item => (
             <WishListDeatil

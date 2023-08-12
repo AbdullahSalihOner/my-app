@@ -1,0 +1,82 @@
+.card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 15px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.card-img-top {
+  max-width: 100%;
+  max-height: 200px;
+  object-fit: contain;
+}
+
+.card-title {
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.card-text {
+  font-size: 1rem;
+  color: #555;
+}
+
+.btn-dark {
+  background-color: #343a40;
+  color: white;
+  border: none;
+  transition: background-color 0.2s;
+}
+
+.btn-dark:hover {
+  background-color: #292b2c;
+}
+
+.card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card-footer button {
+  margin-left: 10px;
+}
+
+
+  /* Modal stil ayarları */
+  .custom-modal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+    max-width: 400px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  .modal-title {
+    text-align: center;
+    margin-bottom: 10px;
+  }
+  
+  .modal-content {
+    text-align: center;
+  }
+  
+  .modal-button {
+    display: block;
+    margin: 0 auto;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
