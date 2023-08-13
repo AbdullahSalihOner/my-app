@@ -1,0 +1,23 @@
+
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #f8f9fa;
+    padding: 20px 0;
+    color: #333;
+    box-shadow: 0px -2px 4px rgba(0, 0, 0, 0.1);
+    transform: translateY(100%); /* Başlangıçta aşağıda gizli */
+    transition: transform 0.3s ease-in-out; /* Animasyonlu geçiş */
+  }
+  
+  footer.show {
+    transform: translateY(0); /* Footerı yukarı taşı, görünür hale getir */
+  }
+  
+  footer .container {
+    text-align: center;
+  }
+  
+  /* Diğer stillendirmeleri burada yapabilirsiniz */
+  

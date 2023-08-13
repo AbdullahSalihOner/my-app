@@ -18,6 +18,7 @@ import AdminPanel from "../pages/AdminPanel";
 import ProductAdminPage from "../pages/ProductAdminPage";
 import UserAdminPage from "../pages/UserAdminPage";
 import CategoryAdminPage from "../pages/CategoryAdminPage";
+import Footer from "./Footer";
 
 
 
@@ -62,9 +63,10 @@ export default function Dashboard() {
 
 
           </Grid.Column>
-          
+
+         
         </Grid.Row>
-        
+       
       </Grid>
     </div>
   );

@@ -50,9 +50,7 @@ export default function UserAdmin() {
           <h2>User Card</h2>
         </div>
         <div className="card-body">
-          <button className="btn btn-primary mb-3">
-            Kullanıcıları Listele
-          </button>
+         
           <ul className="list-group">
             {users.map((user) => (
               <li

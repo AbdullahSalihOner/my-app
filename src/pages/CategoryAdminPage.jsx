@@ -66,7 +66,6 @@ export default function CategoryAdmin() {
           <h2>Category Card</h2>
         </div>
         <div className="card-body">
-          <button className="btn btn-primary mb-3">Category Listele</button>
           <button className="btn btn-primary mb-3">Category Ekle</button>
           <ul className="list-group">
             {categories.map((category) => (

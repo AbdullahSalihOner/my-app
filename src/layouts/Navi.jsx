@@ -1,24 +1,34 @@
 import React, { useState } from "react";
 import CartSummary from "./CartSummary";
 import { Button, Container, Menu } from "semantic-ui-react";
-import SignedOut from "./SignedOut";
 import SignedIn from "./SignedIn";
 import { useHistory } from "react-router-dom/cjs/react-router-dom";
 import Categories from "./CategoriesNavi";
 import "./CSS/Navi.css";
 import { useEffect } from "react";
+import { UserService } from "../services/userService";
 
 export default function Navi() {
-  // const [userId, setUserId] = useState(null);
-  // setUserId(localStorage.getItem("id"));
-
   const userId = localStorage.getItem("id");
-
   const history = useHistory();
+  const [userRole, setUserRole] = useState("");
 
   useEffect(() => {
-    console.log(userId);
+    if (userId) {
+      fetchUserRole(userId);
+    }
   }, [userId]);
+
+  const fetchUserRole = async (userId) => {
+    try {
+      const userService = new UserService();
+      const response = await userService.getUserById(userId);
+      setUserRole(response.data.role);
+      
+    } catch (error) {
+      console.error("Error fetching user role:", error);
+    }
+  };
 
   const redirectToLogin = () => {
     history.push(`/login`);
@@ -38,15 +48,17 @@ export default function Navi() {
 
           <Categories />
 
+          {userRole === "admin" ? (
+            <Menu.Item href="/admin">Admin Panel</Menu.Item>
+          ) : null}
+
           <Menu.Menu position="right">
             <CartSummary />
             {userId === null ? (
               <Button onClick={() => redirectToLogin()}> Signin </Button>
             ) : (
-              <SignedIn/>
+              <SignedIn />
             )}
-
-            
           </Menu.Menu>
         </Container>
       </Menu>

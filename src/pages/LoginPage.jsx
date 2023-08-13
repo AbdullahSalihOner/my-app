@@ -20,35 +20,17 @@ export default function LoginPage() {
 
       localStorage.setItem("id", result.data.userId);
 
-      if (result.data.status === "success") {
-        fetchUsers(); // Kullanıcı bilgilerini çek
+     
         history.push('/'); // Ana sayfaya yönlendir
         window.location.reload();
-      } else {
-        setErrorMessage("Bilgiler yanlış"); // Hata mesajını ayarla
-      }
+      
     } catch (error) {
       console.log(error);
+      setErrorMessage("Bilgiler yanlış");
     }
   };
 
-  const fetchUsers = async () => {
-    try {
-      const userService = new UserService();
-      const response = await userService.getUsers();
-      setUsers(response.data);
-      console.log(response.data);
-
-      // Kullanıcının rolünü kontrol et
-      const loggedInUser = users.find(user => user.email === email);
-      if (loggedInUser && loggedInUser.role === "admin") {
-        history.push('/admin'); // Eğer admin ise /admin sayfasına yönlendir
-      }
-
-    } catch (error) {
-      console.error("Error fetching users:", error);
-    }
-  };
+  
 
   return (
     <div className="d-flex justify-content-center align-items-center vh-100">

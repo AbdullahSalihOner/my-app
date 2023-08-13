@@ -55,8 +55,28 @@ export default function ProductList() {
   const addProductToWishList = async (product) => {
     let wishListService = new WishListService();
     await wishListService
+      .getWishList(UserId)
+      .then((result) => setItems(result.data));
+
+    let isProductInWishList = false;
+    for (let i = 0; i < items.length; i++) {
+      if (items[i].id === product.id) {
+        isProductInWishList = true;
+        break;
+      }
+    }
+   
+    if (isProductInWishList) {
+      alert("Bu ürün zaten favorilerinizde bulunmaktadır.");
+      return;
+    }
+    else{
+      await wishListService
       .addWishList(product, UserId)
       .then((result) => console.log(result));
+      alert("Ürün favorilere eklendi");
+    }
+
   };
 
   const removeProductFromWishList = async (wishListId) => {
@@ -73,6 +93,7 @@ export default function ProductList() {
     await cartService
       .addToCart(UserId, items)
       .then((result) => console.log(result));
+    alert("Ürün sepete eklendi");
   };
 
   const redirectToProduct = (productId) => {
@@ -82,7 +103,7 @@ export default function ProductList() {
   useEffect(() => {
     let productService = new ProductService();
     productService.getProducts().then((result) => setProducts(result.data));
-    
+    getWishList();
   }, []);
 
   return (

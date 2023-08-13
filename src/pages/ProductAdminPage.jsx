@@ -66,7 +66,6 @@ export default function ProductAdmin() {
                 <h2>Product Card</h2>
               </div>
               <div className="card-body">
-                <button className="btn btn-primary mb-3">Ürünleri Listele</button>
                 <button className="btn btn-primary mb-3">Ürün Ekle</button>
                 
                 <ul className="list-group">

@@ -30,7 +30,7 @@ export default function WishListDeatil({ item, onRemove, onAddToCart }) {
       .then((result) => setItems(result.data));
   };
 
-  console.log(items);
+  //console.log(items);
 
   useEffect(() => {
     getWishList();
@@ -42,6 +42,7 @@ export default function WishListDeatil({ item, onRemove, onAddToCart }) {
     await wishListService
       .deleteWishList(wishListId, UserId)
       .then((result) => setItems(updatedWishList));
+      alert("Ürün silindi");
   };
 
   const addProductToCart = async (items) => {
@@ -49,6 +50,7 @@ export default function WishListDeatil({ item, onRemove, onAddToCart }) {
     await cartService
       .addToCart(UserId, items)
       .then((result) => console.log(result));
+    alert("Ürün sepete eklendi");
   };
 
   console.log(items);
