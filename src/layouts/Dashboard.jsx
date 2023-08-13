@@ -19,6 +19,9 @@ import ProductAdminPage from "../pages/ProductAdminPage";
 import UserAdminPage from "../pages/UserAdminPage";
 import CategoryAdminPage from "../pages/CategoryAdminPage";
 import Footer from "./Footer";
+import CategoryAddAdmin from "../pages/CategoryAddAdmin";
+import ProductAddAdmin from "../pages/ProductAddAdmin";
+import UserAddAdmin from "../pages/UserAddAdmin";
 
 
 
@@ -55,9 +58,12 @@ export default function Dashboard() {
             <Route path="/payment" component={Payment} />
 
             <Route exact path="/admin" component={AdminPanel} />
-            <Route path="/admin/product" component={ProductAdminPage}/>
-            <Route path="/admin/user" component={UserAdminPage}/>
-            <Route path="/admin/category" component={CategoryAdminPage}/>
+            <Route exact path="/admin/product" component={ProductAdminPage}/>
+            <Route exact path="/admin/user" component={UserAdminPage}/>
+            <Route exact path="/admin/category" component={CategoryAdminPage}/>
+            <Route path="/admin/category/add" component={CategoryAddAdmin}/>
+            <Route path="/admin/product/add" component={ProductAddAdmin}/>
+            <Route path="/admin/user/add" component={UserAddAdmin}/>
 
 
 

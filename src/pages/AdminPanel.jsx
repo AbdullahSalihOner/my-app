@@ -16,7 +16,6 @@ export default function AdminPanel() {
                   <Card.Header>User</Card.Header>
                   <Card.Description>
                     <Button color="green" href="/admin/user">Listele</Button>
-                    <Button color="blue">Ekle</Button>
                   </Card.Description>
                 </Card.Content>
               </Card>
@@ -30,7 +29,7 @@ export default function AdminPanel() {
                   <Card.Header>Category</Card.Header>
                   <Card.Description>
                     <Button color="green" href="/admin/category">Listele</Button>
-                    <Button color="blue">Ekle</Button>
+                    <Button color="blue" href="/admin/category/add">Ekle</Button>
                   </Card.Description>
                 </Card.Content>
               </Card>
@@ -44,7 +43,7 @@ export default function AdminPanel() {
                   <Card.Header>Product</Card.Header>
                   <Card.Description>
                     <Button color="green" href="/admin/product">Listele</Button>
-                    <Button color="blue">Ekle</Button>
+                    <Button color="blue" href="/admin/product/add"> Ekle</Button>
                   </Card.Description>
                 </Card.Content>
               </Card>

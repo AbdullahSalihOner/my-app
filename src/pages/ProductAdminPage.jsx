@@ -1,12 +1,17 @@
 import React, { useEffect, useState } from 'react'
 import { ProductService } from '../services/productService';
 import { Table } from 'semantic-ui-react';
+import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 
 export default function ProductAdmin() {
     const [products, setProducts] = useState([]);
     const [newProduct, setNewProduct] = useState('');
+    const history = useHistory();
 
   
+    const gotoAddPage = () => {
+      history.push('/admin/product/add');
+    };
     useEffect(() => {
       fetchProducts();
     }, []);
@@ -66,7 +71,7 @@ export default function ProductAdmin() {
                 <h2>Product Card</h2>
               </div>
               <div className="card-body">
-                <button className="btn btn-primary mb-3">Ürün Ekle</button>
+                <button className="btn btn-primary mb-3" onClick={()=>gotoAddPage()}>Ürün Ekle</button>
                 
                 <ul className="list-group">
                 {products.map((product) => (
@@ -100,7 +105,7 @@ export default function ProductAdmin() {
                   </Table>
                   <div>
                     <button className="btn btn-danger me-2" onClick={() => deleteProduct(product.id)} >Sil</button>
-                    <button className="btn btn-warning" >Güncelle</button>
+                    {/* <button className="btn btn-warning" >Güncelle</button> */}
                   </div>
                 </li>
     

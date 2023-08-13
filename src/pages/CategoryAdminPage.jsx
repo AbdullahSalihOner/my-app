@@ -1,10 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { CategoryService } from "../services/categoryService";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 export default function CategoryAdmin() {
   const [categories, setCategories] = useState([]);
   const [newCategory, setNewCategory] = useState("");
+  const history = useHistory();
 
+  const gotoAddPage = () => {
+    history.push("/admin/category/add");
+  };
   useEffect(() => {
     fetchCategories();
   }, []);
@@ -66,7 +71,7 @@ export default function CategoryAdmin() {
           <h2>Category Card</h2>
         </div>
         <div className="card-body">
-          <button className="btn btn-primary mb-3">Category Ekle</button>
+          <button className="btn btn-primary mb-3" onClick={()=>gotoAddPage()}>Category Ekle</button>
           <ul className="list-group">
             {categories.map((category) => (
               <li
@@ -76,7 +81,7 @@ export default function CategoryAdmin() {
                 {category.categoryName}
                 <div>
                   <button className="btn btn-danger me-2" onClick={()=>deleteCategory(category.id)}>Sil</button>
-                  <button className="btn btn-warning">Güncelle</button>
+                  {/* <button className="btn btn-warning">Güncelle</button> */}
                 </div>
               </li>
             ))}

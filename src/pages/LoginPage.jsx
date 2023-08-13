@@ -20,6 +20,7 @@ export default function LoginPage() {
 
       localStorage.setItem("id", result.data.userId);
 
+      
      
         history.push('/'); // Ana sayfaya yönlendir
         window.location.reload();
