@@ -40,7 +40,7 @@ export default function CartSummary() {
       return;
     }
 
-    console.log(userId);
+    
     let cartService = new CartService();
     await cartService
       .getCart(userId)

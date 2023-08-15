@@ -12,11 +12,12 @@ export default function CartDetail() {
   const history = useHistory();
 
   const getCart = async () => {
-    console.log(UserId);
+    
     let cartService = new CartService();
     await cartService
       .getCart(UserId)
       .then((result) => setProducts(result.data.cartItems));
+      
   };
   useEffect(() => {
     getCart();
@@ -33,18 +34,20 @@ export default function CartDetail() {
   };
 
   const updateQuantity = async (productId, newQuantity) => {
-    const updatedProducts = products.map((product) => {
-      if (product.id === productId) {
-        return { ...product, quantity: newQuantity };
-      }
-      console.log(product);
-      return product;
-    });
-    let cartService = new CartService();
-    await cartService
-      .updateCart(productId, UserId)
-      .then((result) => setProducts(updatedProducts));
+    if (newQuantity >= 1) { // Eğer yeni miktar 1 veya daha fazlaysa
+      const updatedProducts = products.map((product) => {
+        if (product.product.id === productId) {
+          return { ...product, quantity: newQuantity };
+        }
+        return product;
+      });
+      let cartService = new CartService();
+      await cartService
+        .updateCart(productId, UserId, { id: productId, quantity: newQuantity })
+        .then((result) => setProducts(updatedProducts));
+    }
   };
+  
 
   const calculateTotalPrice = () => {
     return products.reduce(
@@ -55,7 +58,7 @@ export default function CartDetail() {
 
   const handlePayment = () => {
     // Ödeme işlemleri burada gerçekleştirilebilir
-    history.push('/login'); 
+    history.push("/payments");
     console.log("Ödeme yapıldı.");
   };
 
@@ -73,36 +76,24 @@ export default function CartDetail() {
                     alt="resim"
                     style={{ width: "100px", height: "100px" }}
                   />
-                  <div className="ml-3">
-                    <h4>{product.product.name}</h4>
-                    <p>Fiyat: ${product.product.price}</p>
-                    <div className="input-group">
-                      <button
-                        className="btn btn-outline-secondary"
-                        onClick={() =>
-                          updateQuantity(
-                            product.product.id,
-                            product.quantity - 1
-                          )
-                        }
-                      >
-                        -
-                      </button>
-                      <span className="input-group-text">
-                        {product.quantity}
-                      </span>
-                      <button
-                        className="btn btn-outline-secondary"
-                        onClick={() =>
-                          updateQuantity(
-                            product.product.id,
-                            product.quantity + 1
-                          )
-                        }
-                      >
-                        +
-                      </button>
-                    </div>
+                  <div className="input-group">
+                    <button
+                      className="btn btn-outline-secondary"
+                      onClick={() =>
+                        updateQuantity(product.product.id, product.quantity - 1)
+                      }
+                    >
+                      -
+                    </button>
+                    <span className="input-group-text">{product.quantity}</span>
+                    <button
+                      className="btn btn-outline-secondary"
+                      onClick={() =>
+                        updateQuantity(product.product.id, product.quantity + 1)
+                      }
+                    >
+                      +
+                    </button>
                   </div>
                 </div>
                 <button
@@ -117,7 +108,9 @@ export default function CartDetail() {
           <div className="col-md-4">
             <div className="card">
               <div className="card-body">
-                <h4>Toplam Fiyat: ${parseFloat(calculateTotalPrice()).toFixed(2)}</h4>
+                <h4>
+                  Toplam Fiyat: ${parseFloat(calculateTotalPrice()).toFixed(2)}
+                </h4>
                 <button
                   className="btn btn-primary mt-3"
                   onClick={handlePayment}

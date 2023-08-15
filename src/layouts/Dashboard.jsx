@@ -22,6 +22,7 @@ import Footer from "./Footer";
 import CategoryAddAdmin from "../pages/CategoryAddAdmin";
 import ProductAddAdmin from "../pages/ProductAddAdmin";
 import UserAddAdmin from "../pages/UserAddAdmin";
+import PaymentPage from "../pages/PaymentPage";
 
 
 
@@ -65,6 +66,8 @@ export default function Dashboard() {
             <Route path="/admin/product/add" component={ProductAddAdmin}/>
             <Route path="/admin/user/add" component={UserAddAdmin}/>
 
+
+            <Route  path="/payments" component={PaymentPage} />
 
 
 

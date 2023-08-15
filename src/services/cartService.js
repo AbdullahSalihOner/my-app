@@ -21,7 +21,7 @@ export class  CartService {
         return axios.put("http://localhost:8080/cart/update/" +cartItemId + "?UserId=" +id,
         {
             id:id,
-            productId: CartDto.id,
+            productId: cartItemId,
             quantity:CartDto.quantity,
         });
     }
