@@ -1,29 +1,28 @@
 import React, { useEffect, useState } from "react";
 import "../pages/CSS/PaymentPage.css"; // Stil dosyası gerektiği gibi ayarlanmalı
 import CartService from "../services/cartService";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 export default function PaymentPage() {
   const [cardHolder, setCardHolder] = useState("");
   const [expiryDate, setExpiryDate] = useState("");
   const [selectedAddress, setSelectedAddress] = useState('');
   const [cardNumber, setCardNumber] = useState('');
-  const [cartTotal, setCartTotal] = useState(''); // [1
+  const [cartTotal, setCartTotal] = useState('');
   const [error, setError] = useState("");
   const [cvv, setCvv] = useState('');
   const UserId = localStorage.getItem("id");
+  
+  const history = useHistory(); // useHistory'u tanımladık
 
-  const getCartTotal = async() => {
+  const getCartTotal = async () => {
     let total = 0;
     let cartService = new CartService();
-    await cartService
-    .getCart(UserId)
-    .then((result) => setCartTotal(result.data.totalCost));
-
+    await cartService.getCart(UserId).then((result) => setCartTotal(result.data.totalCost));
   };
- 
 
   const handlePayment = () => {
-    setError(""); // Her ödeme denemesinde hataları temizle
+    setError("");
 
     if (!/^[0-9]{16}$/.test(cardNumber)) {
       setError("Kart numarası 16 haneli bir sayı olmalıdır.");
@@ -45,6 +44,8 @@ export default function PaymentPage() {
       return;
     }
 
+    alert("Lütfen Şifreyi giriniz : 12345");
+
     // Ödeme işlemleri burada gerçekleştirilebilir
     console.log("Ödeme yapıldı:", {
       cardNumber,
@@ -52,11 +53,14 @@ export default function PaymentPage() {
       expiryDate,
       cvv,
     });
+
+    // Ödeme başarılıysa /card-approve sayfasına yönlendir
+    history.push("/card-approve");
   };
 
   useEffect(() => {
     getCartTotal();
-    }, []);
+  }, []);
   return (
     <div className="payment-container">
       <h2>Ödeme Bilgileri</h2>
@@ -103,7 +107,7 @@ export default function PaymentPage() {
       </div>
       {error && <p className="error-message">{error}</p>}
       <button className="payment-button" onClick={handlePayment}>
-        Ödeme Yap
+        Bilgileri Onayla
       </button>
     </div>
   );

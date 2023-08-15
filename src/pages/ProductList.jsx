@@ -7,7 +7,6 @@ import { useHistory } from "react-router-dom";
 import "../pages/CSS/ProductList.css";
 import Heart from "react-heart";
 import Modal from "react-modal";
-import CategoryList from "../layouts/CategoryList";
 import { CategoryService } from "../services/categoryService";
 import { Col, Row } from "react-bootstrap";
 

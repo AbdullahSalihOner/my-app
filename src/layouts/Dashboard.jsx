@@ -23,6 +23,8 @@ import CategoryAddAdmin from "../pages/CategoryAddAdmin";
 import ProductAddAdmin from "../pages/ProductAddAdmin";
 import UserAddAdmin from "../pages/UserAddAdmin";
 import PaymentPage from "../pages/PaymentPage";
+import CreditCardApprove from "../pages/CreditCardApprove";
+import Orders from "../pages/Orders";
 
 
 
@@ -56,7 +58,7 @@ export default function Dashboard() {
 
             <Route path="/about" component={About}/>
 
-            <Route path="/payment" component={Payment} />
+           
 
             <Route exact path="/admin" component={AdminPanel} />
             <Route exact path="/admin/product" component={ProductAdminPage}/>
@@ -68,6 +70,8 @@ export default function Dashboard() {
 
 
             <Route  path="/payments" component={PaymentPage} />
+            <Route path="/card-approve" component={CreditCardApprove} />
+            <Route path="/order" component={Orders} />
 
 
 

@@ -57,9 +57,13 @@ export default function CartDetail() {
   };
 
   const handlePayment = () => {
-    // Ödeme işlemleri burada gerçekleştirilebilir
-    history.push("/payments");
-    console.log("Ödeme yapıldı.");
+    if (products.length > 0) {
+      // Eğer sepette ürün varsa, ödeme sayfasına yönlendir
+      history.push("/payments");
+    } else {
+      console.log("Sepette ürün yok.");
+      alert("Sepette ürün yok.");
+    }
   };
 
   return (
