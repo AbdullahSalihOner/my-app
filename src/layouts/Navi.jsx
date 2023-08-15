@@ -46,13 +46,14 @@ export default function Navi() {
         <Container>
           <Menu.Item href="/" name="Anasayfa" />
 
-          <Categories />
-
           {userRole === "admin" ? (
             <Menu.Item href="/admin">Admin Panel</Menu.Item>
           ) : null}
 
           <Menu.Menu position="right">
+            {userId != null ? (
+              <Menu.Item href="/wishlist" name="WishList"></Menu.Item>
+            ):null}
             <CartSummary />
             {userId === null ? (
               <Button onClick={() => redirectToLogin()}> Signin </Button>

@@ -22,6 +22,8 @@ export default function SignupPage() {
     e.preventDefault();
 
     try {
+
+      
       let userService = new UserService();
       const result = await userService.signUp(user); 
       
@@ -73,7 +75,7 @@ export default function SignupPage() {
             />
           </Form.Field>
           <Form.Field>
-            <Checkbox label="Kullanım Koşullarını kabul ediyorum" />
+            
           </Form.Field>
           <Button type="submit" color="blue" fluid>
             Kayıt Ol

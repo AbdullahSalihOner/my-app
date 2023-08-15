@@ -9,10 +9,16 @@ export default function LoginPage() {
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState(""); // Hata mesajını saklamak için state
   const [users, setUsers] = useState([]);
+  const [isChecked, setIsChecked] = useState(false);
   const history = useHistory();
 
   const handleSignIn = async (e) => {
     e.preventDefault();
+
+    if (!isChecked) {
+      setErrorMessage("Lütfen kullanım koşullarını kabul ediniz.");
+      return; // işlemi durdur
+    }
 
     try {
       let userService = new UserService();
@@ -36,7 +42,6 @@ export default function LoginPage() {
   return (
     <div className="d-flex justify-content-center align-items-center vh-100">
       <Card style={{ width: '300px' }}>
-        <Image src="https://www.computerhope.com/jargon/g/guest-user.png" wrapped ui={false} style={{ maxWidth: '100%', height: 'auto' }} />
         <Card.Content>
           <Card.Header style={{ textAlign: 'center', marginBottom: '1rem' }}>Giriş Yap</Card.Header>
           <Form onSubmit={handleSignIn}>
@@ -56,7 +61,11 @@ export default function LoginPage() {
               />
             </Form.Field>
             <Form.Field>
-              <Checkbox label="Kullanım Koşullarını kabul ediyorum" />
+              <Checkbox 
+               label="Kullanım Koşullarını kabul ediyorum"
+               checked={isChecked}
+               onChange={() => setIsChecked(!isChecked)}
+              />
             </Form.Field>
             <Button type="submit" color="blue" fluid>
               Giriş Yap

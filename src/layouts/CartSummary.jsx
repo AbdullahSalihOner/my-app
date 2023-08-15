@@ -49,9 +49,10 @@ export default function CartSummary() {
 
   useEffect(() => {
     getCart();
-  }, []);
+  }, [getCart]);
 
   return (
+    
     <div>
       <Dropdown item text="Sepet" className="dropdown-content">
         <Dropdown.Menu>

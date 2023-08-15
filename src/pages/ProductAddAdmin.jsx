@@ -8,31 +8,32 @@ export default function ProductAddAdmin() {
     const [categoryId, setCategoryId] = useState(0);
     const [description, setDescription] = useState("");
     const [imageURL, setImageURL] = useState("");
+    const [imageFile, setImageFile] = useState(null);
     const [price, setPrice] = useState(0);
     const [name, setName] = useState("");    
     const history = useHistory();
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    
-    try {
+    const handleSubmit = async (e) => {
+      e.preventDefault();
+  
+      try {
         let productService = new ProductService();
-        const result = await productService.addProduct({
-            categoryId,
-            description,
-            imageURL,
-            price,
-            name
-        }); // Kısa yol
+        const formData = new FormData();
+        formData.append('categoryId', categoryId);
+        formData.append('description', description);
+        formData.append('imageURL', imageFile);
+        formData.append('price', price);
+        formData.append('name', name);
+  
+        const result = await productService.addProduct(formData);
         window.location.reload();
-        alert("Ürün Eklendi");
-       
-    }
-    catch (error) {
+        alert('Ürün Eklendi');
+      } catch (error) {
         console.log(error);
-    }
-   
-  }
+      }
+    };
+
+
   return (
     
 
@@ -82,13 +83,12 @@ export default function ProductAddAdmin() {
             />
           </div>
           <div className="mb-3">
-            <label htmlFor="imageUrl" style={{ marginBottom: '5px', display: 'block' }}>Image</label>
+            <label htmlFor="imageFile" style={{ marginBottom: '5px', display: 'block' }}>Image</label>
             <input
-              type="text"
+              type="file"
               className="form-control"
-              id="imageUrl"
-              value={imageURL}
-              onChange={(e) => setImageURL(e.target.value)}
+              id="imageFile"
+              onChange={(e) => setImageFile(e.target.files[0])}
               style={{
                 border: '1px solid #ccc',
                 borderRadius: '5px',

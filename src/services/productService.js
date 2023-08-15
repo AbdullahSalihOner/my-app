@@ -32,5 +32,8 @@ export class ProductService {
             price:productDto.price
         });
     }
+    getProductByCategoryId(categoryId)  {
+        return axios.get("http://localhost:8080/product/category/"+categoryId);
+    } 
 
 }
