@@ -60,9 +60,9 @@ export default function SignedIn(props) {
             />
             <Dropdown.Item
               as={NavLink}
-              to="/wishlist"
-              text="İstek Listem"
-              icon="info"
+              to="/order"
+              text="Orders"
+              icon="box"
             />
             <Dropdown.Item
               onClick={() => signOut()}

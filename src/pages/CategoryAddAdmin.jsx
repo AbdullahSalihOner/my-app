@@ -92,28 +92,7 @@ export default function CategoryAddAdmin() {
               required
             />
           </div>
-          <div className="mb-3">
-            <label
-              htmlFor="imageUrl"
-              style={{ marginBottom: "5px", display: "block" }}
-            >
-              Image
-            </label>
-            <input
-              type="text"
-              className="form-control"
-              id="imageUrl"
-              value={imageUrl}
-              onChange={(e) => setImageUrl(e.target.value)}
-              style={{
-                border: "1px solid #ccc",
-                borderRadius: "5px",
-                padding: "10px",
-                width: "100%",
-              }}
-              required
-            />
-          </div>
+          
 
           <div style={{ textAlign: "center" }}>
             <button
