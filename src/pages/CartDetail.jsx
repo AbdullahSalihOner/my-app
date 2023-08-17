@@ -18,7 +18,7 @@ export default function CartDetail() {
       .getCart(UserId)
       .then((result) => setProducts(result.data.cartItems));
       
-  };
+  };  
   useEffect(() => {
     getCart();
   }, []);
