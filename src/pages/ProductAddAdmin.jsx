@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { CategoryService } from '../services/categoryService';
@@ -9,6 +9,7 @@ import { ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage'; //
 export default function ProductAddAdmin() {
     const [categoryId, setCategoryId] = useState(0);
     const [description, setDescription] = useState("");
+    const [categories, setCategories] = useState([]);
  
     const [imageFile, setImageFile] = useState(null);
     const [price, setPrice] = useState(0);
@@ -25,6 +26,13 @@ export default function ProductAddAdmin() {
       setImage(e.target.files[0]);
     }
   };
+
+  const getCategories =  () => {
+    let categoryService = new CategoryService();
+    categoryService.getCategories().then((result) => setCategories(result.data));
+    console.log(categories);
+  };
+  
 
   const handleUpload = () => {
     if (image) {
@@ -88,6 +96,9 @@ export default function ProductAddAdmin() {
     }
   };
 
+  useEffect(() => {
+    getCategories();
+  }, []);
   return (
     
 
@@ -177,22 +188,20 @@ export default function ProductAddAdmin() {
             />
           </div>
           <div className="mb-3">
-            <label htmlFor="categoryId" style={{ marginBottom: '5px', display: 'block' }}>Category Id</label>
-            <input
-              type="text"
-              className="form-control"
-              id="categoryId"
-              value={categoryId}
-              onChange={(e) => setCategoryId(e.target.value)}
-              style={{
-                border: '1px solid #ccc',
-                borderRadius: '5px',
-                padding: '10px',
-                width: '100%',
-              }}
-              required
-            />
-          </div>
+              <label htmlFor="categoryId" style={{ /* ... stil bilgileri ... */ }}>Category</label>
+              <select
+                className="form-control"
+                id="categoryId"
+                value={categoryId}
+                onChange={(e) => setCategoryId(e.target.value)}
+                required
+              >
+                <option value="" disabled>Select a category</option>
+                {categories.map(category => (
+                  <option key={category.id} value={category.id}>{category.categoryName}</option>
+                ))}
+              </select>
+            </div>
     
           <div style={{ textAlign: 'center' }}>
             <button type="submit" className="btn btn-primary" style={{ width: '100%' }}>Ekle</button>

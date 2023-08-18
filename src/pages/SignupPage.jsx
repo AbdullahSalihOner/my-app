@@ -10,6 +10,8 @@ export default function SignupPage() {
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [isChecked, setIsChecked] = useState(false);
+  const [errorMessage, setErrorMessage] = useState(""); // Hata mesajını saklamak için state
   const history = useHistory();
 
   const user = {
@@ -20,6 +22,12 @@ export default function SignupPage() {
   }
   const handleSignUp = async (e) => {
     e.preventDefault();
+
+    if (!isChecked) {
+      setErrorMessage("Lütfen kullanım koşullarını kabul ediniz.");
+      alert("Lütfen kullanım koşullarını kabul ediniz.");
+      return; // işlemi durdur
+    }
 
     try {
 
@@ -76,6 +84,13 @@ export default function SignupPage() {
           </Form.Field>
           <Form.Field>
             
+          </Form.Field>
+          <Form.Field>
+            <Checkbox 
+            label="I agree to the Terms and Conditions" 
+            checked={isChecked}
+               onChange={() => setIsChecked(!isChecked)}
+            />
           </Form.Field>
           <Button type="submit" color="blue" fluid>
             Kayıt Ol

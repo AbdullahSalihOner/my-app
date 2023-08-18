@@ -42,7 +42,7 @@ export default function WishListDeatil({ item, onRemove, onAddToCart }) {
     await wishListService
       .deleteWishList(wishListId, UserId)
       .then((result) => setItems(updatedWishList));
-      alert("Ürün silindi");
+    alert("Ürün silindi");
   };
 
   const addProductToCart = async (items) => {
@@ -81,12 +81,6 @@ export default function WishListDeatil({ item, onRemove, onAddToCart }) {
               onClick={() => addProductToCart(item)}
             >
               Sepete Ekle
-            </button>
-            <button
-              className="btn btn-primary ml-2"
-              onClick={() => openModal(item.id)}
-            >
-              Detaylar
             </button>
             {activeModal === item.id && (
               <Modal

@@ -15,10 +15,7 @@ export default function LoginPage() {
   const handleSignIn = async (e) => {
     e.preventDefault();
 
-    if (!isChecked) {
-      setErrorMessage("Lütfen kullanım koşullarını kabul ediniz.");
-      return; // işlemi durdur
-    }
+   
 
     try {
       let userService = new UserService();
@@ -61,11 +58,7 @@ export default function LoginPage() {
               />
             </Form.Field>
             <Form.Field>
-              <Checkbox 
-               label="Kullanım Koşullarını kabul ediyorum"
-               checked={isChecked}
-               onChange={() => setIsChecked(!isChecked)}
-              />
+              
             </Form.Field>
             <Button type="submit" color="blue" fluid>
               Giriş Yap

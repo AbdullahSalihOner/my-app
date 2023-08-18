@@ -68,18 +68,21 @@ export default function CartDetail() {
 
   return (
     <div>
-      <div className="container mt-5">
-        <h2 className="mb-4">Sepetiniz</h2>
-        <div className="row">
-          <div className="col-md-8">
-            {products.map((product) => (
-              <div key={product.product.id} className="mb-4">
-                <div className="d-flex align-items-center">
-                  <img
-                    src={product.product.imageURL}
-                    alt="resim"
-                    style={{ width: "100px", height: "100px" }}
-                  />
+  <div className="container mt-5">
+    <h2 className="mb-4">Sepetiniz</h2>
+    <div className="row">
+      <div className="col-md-8">
+        {products.map((product) => (
+          <div key={product.product.id} className="mb-4">
+            <div className="card p-3">
+              <div className="d-flex align-items-center">
+                <img
+                  src={product.product.imageURL}
+                  alt="resim"
+                  style={{ width: "120px", height: "120px", objectFit: 'cover', borderRadius: '5px' }}
+                />
+                <div className="ml-3">
+                  <h5>{product.product.name}</h5>
                   <div className="input-group">
                     <button
                       className="btn btn-outline-secondary"
@@ -100,32 +103,43 @@ export default function CartDetail() {
                     </button>
                   </div>
                 </div>
-                <button
-                  className="btn btn-danger mt-2"
-                  onClick={() => removeProduct(product.id)}
-                >
-                  Sepetten Çıkar
-                </button>
               </div>
-            ))}
-          </div>
-          <div className="col-md-4">
-            <div className="card">
-              <div className="card-body">
-                <h4>
-                  Toplam Fiyat: ${parseFloat(calculateTotalPrice()).toFixed(2)}
-                </h4>
-                <button
-                  className="btn btn-primary mt-3"
-                  onClick={handlePayment}
-                >
-                  Ödeme Yap
-                </button>
+              <div style={{ position: 'absolute', top: '50%', left: '71%', transform: 'translate(-50%, -50%)' }} className="mt-2 text-center">
+                <p style={{ fontSize: '25px'}}>
+                  ${product.product.price.toFixed(2)}
+                </p>
               </div>
+              
             </div>
+            <div className="card mt-2">
+            <button
+                className="btn btn-danger btn-block"
+                onClick={() => removeProduct(product.id)}
+              >
+                Sepetten Çıkar
+              </button>
+            </div>
+          </div>
+        ))}
+      </div>
+     
+      <div className="col-md-4">
+        <div className="card">
+          <div className="card-body">
+            <h4>
+              Toplam Fiyat: ${parseFloat(calculateTotalPrice()).toFixed(2)}
+            </h4>
+            <button
+              className="btn btn-primary mt-3"
+              onClick={handlePayment}
+            >
+              Ödeme Yap
+            </button>
           </div>
         </div>
       </div>
     </div>
+  </div>
+</div>
   );
 }

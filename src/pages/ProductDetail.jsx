@@ -30,44 +30,29 @@ export default function ProductDetail() {
   }, []);
 
   return (
-    <div>
-      <Card.Group>
-        <Card fluid className="card">
-          <Card.Content
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-            }}
-          >
-            <Image floated="right" size="medium" src={`${product.imageURL}`} />
-          </Card.Content>
-          <Card.Content>
-            <Card.Header className="card-header">{product.name}</Card.Header>
-            <Card.Description className="card-description">
-              {product.description}
-            </Card.Description>
-          </Card.Content>
-          <Card.Content extra>
-            <div className="ui two buttons">
-              <Button
-                basic
-                color="green"
-                onClick={() => addProductToCart(product)}
-              >
-                Sepete Ekle
-              </Button>
-              <Button
-                basic
-                color="yellow"
-                onClick={() => addProductToWishList(product)}
-              >
-                İstek Listesine Ekle
-              </Button>
-            </div>
-          </Card.Content>
-        </Card>
-      </Card.Group>
-    </div>
+    <div className="product-card">
+    <Card fluid className="card">
+      <Card.Content textAlign="center">
+        <Image centered size="small" src={product.imageURL} />
+      </Card.Content>
+      <Card.Content>
+        <Card.Header className="card-header">{product.name}</Card.Header>
+        <Card.Description className="card-description">
+          {product.description}
+        </Card.Description>
+      </Card.Content>
+      <Card.Content extra>
+        <div className="ui two buttons">
+          <Button basic color="green" onClick={() => addProductToCart(product)}>
+            Sepete Ekle
+          </Button>
+          <Button basic color="yellow" onClick={() => addProductToWishList(product)}>
+            İstek Listesine Ekle
+          </Button>
+        </div>
+      </Card.Content>
+    </Card>
+  </div>
+  
   );
 }
