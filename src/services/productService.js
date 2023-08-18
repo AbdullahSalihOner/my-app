@@ -10,13 +10,13 @@ export class ProductService {
     }
     
     addProduct(product) {
+        console.log(product)
         return axios.post("http://localhost:8080/product/add/",{
             categoryId:product.categoryId,
             description:product.description,
             imageURL:product.imageURL,
             name:product.name,
-            price:product.price,
-            id:0
+            price:product.price
         });
     }
     deleteProduct(productId) {

@@ -11,6 +11,8 @@ export default function About() {
   const [editedRole, setEditedRole] = useState("");
   const [editedUser, setEditedUser] = useState(null);
 
+  const UserId = localStorage.getItem("id");
+
   useEffect(() => {
     fetchUsers();
   }, [users]);
@@ -18,7 +20,7 @@ export default function About() {
   const fetchUsers = async () => {
     try {
       const userService = new UserService();
-      const response = await userService.getUsers();
+      const response = await userService.getUserById(UserId);
       setUsers(response.data);
       console.log(response.data);
     } catch (error) {
@@ -83,7 +85,7 @@ export default function About() {
     <div>
       <div className="card">
         <div className="card-header">
-          <h2>User Card</h2>
+          <h2>About User</h2>
         </div>
         <div className="card-body">
           <table className="table">
@@ -97,59 +99,59 @@ export default function About() {
               </tr>
             </thead>
             <tbody>
-              {users.map((user) => (
-                <tr key={user.id}>
-                  <td>{user.id}</td>
+              
+                <tr key={users.id}>
+                  <td>{users.id}</td>
                   <td>
-                    {editMode && editedUser?.id === user.id ? (
+                    {editMode && editedUser?.id === users.id ? (
                       <input
                         type="text"
                         value={editedFirstName}
                         onChange={(e) => setEditedFirstName(e.target.value)}
                       />
                     ) : (
-                      user.firstName
+                      users.firstName
                     )}
                   </td>
                   <td>
-                    {editMode && editedUser?.id === user.id ? (
+                    {editMode && editedUser?.id === users.id ? (
                       <input
                         type="text"
                         value={editedLastName}
                         onChange={(e) => setEditedLastName(e.target.value)}
                       />
                     ) : (
-                      user.lastName
+                      users.lastName
                     )}
                   </td>
                   <td>
-                    {editMode && editedUser?.id === user.id ? (
+                    {editMode && editedUser?.id === users.id ? (
                       <input
                         type="text"
                         value={editedEmail}
                         onChange={(e) => setEditedEmail(e.target.value)}
                       />
                     ) : (
-                      user.email
+                      users.email
                     )}
                   </td>
                   <td>
-                    {editMode && editedUser?.id === user.id ? (
+                    {editMode && editedUser?.id === users.id ? (
                       <input
                         type="text"
                         value={editedRole}
                         onChange={(e) => setEditedRole(e.target.value)}
                       />
                     ) : (
-                      user.role
+                      users.role
                     )}
                   </td>
                   <td>
-                    {editMode && editedUser?.id === user.id ? (
+                    {editMode && editedUser?.id === users.id ? (
                       <div>
                         <button
                           className="btn btn-success"
-                          onClick={() => handleConfirm(user.id)}
+                          onClick={() => handleConfirm(users.id)}
                         >
                           Onayla
                         </button>
@@ -164,13 +166,13 @@ export default function About() {
                       <div>
                         <button
                           className="btn btn-danger me-2"
-                          onClick={() => deleteUser(user.id)}
+                          onClick={() => deleteUser(users.id)}
                         >
                           Sil
                         </button>
                         <button
                           className="btn btn-warning"
-                          onClick={() => handleEdit(user)}
+                          onClick={() => handleEdit(users)}
                         >
                           Güncelle
                         </button>
@@ -178,7 +180,7 @@ export default function About() {
                     )}
                   </td>
                 </tr>
-              ))}
+             
             </tbody>
           </table>
         </div>

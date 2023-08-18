@@ -4,26 +4,19 @@ import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 export default function CategoryAdmin() {
   const [categories, setCategories] = useState([]);
-  const [newCategory, setNewCategory] = useState("");
+  const [editMode, setEditMode] = useState(false);
+  const [editedCategoryName, setEditedCategoryName] = useState("");
+  const [editedCategory, setEditedCategory] = useState(null);
   const history = useHistory();
 
   const gotoAddPage = () => {
     history.push("/admin/category/add");
   };
+
   useEffect(() => {
     fetchCategories();
   }, []);
 
-  const addCategory = async () => {
-    try {
-      const categoryService = new CategoryService();
-      const response = await categoryService.addCategory(newCategory);
-      setCategories([...categories, response.data]);
-      setNewCategory("");
-    } catch (error) {
-      console.error("Error adding category:", error);
-    }
-  };
 
   const updateCategory = async (id, updatedCategory) => {
     try {
@@ -36,6 +29,7 @@ export default function CategoryAdmin() {
         category.id === id ? response.data : category
       );
       setCategories(updatedCategories);
+      setEditMode(false);
     } catch (error) {
       console.error("Error updating category:", error);
     }
@@ -64,6 +58,20 @@ export default function CategoryAdmin() {
     }
   };
 
+  const handleEdit = (category) => {
+    setEditMode(true);
+    setEditedCategory(category);
+    setEditedCategoryName(category.categoryName);
+  };
+
+  const handleConfirm = (id) => {
+    const updatedCategory = {
+      ...editedCategory,
+      categoryName: editedCategoryName
+    };
+    updateCategory(id, updatedCategory);
+  };
+
   return (
     <div>
       <div className="card">
@@ -71,22 +79,46 @@ export default function CategoryAdmin() {
           <h2>Category Card</h2>
         </div>
         <div className="card-body">
-          <button className="btn btn-primary mb-3" onClick={()=>gotoAddPage()}>Category Ekle</button>
+          <button className="btn btn-primary mb-3" onClick={gotoAddPage}>Category Ekle</button>
           <ul className="list-group">
             {categories.map((category) => (
               <li
                 className="list-group-item d-flex justify-content-between align-items-center"
                 key={category.id}
               >
-                {category.categoryName}
+                {editMode && editedCategory?.id === category.id ? (
+                  <input
+                    type="text"
+                    value={editedCategoryName}
+                    onChange={(e) => setEditedCategoryName(e.target.value)}
+                  />
+                ) : (
+                  category.categoryName
+                )}
+                
                 <div>
-                  <button className="btn btn-danger me-2" onClick={()=>deleteCategory(category.id)}>Sil</button>
-                  {/* <button className="btn btn-warning">Güncelle</button> */}
+                  <button className="btn btn-danger me-2" onClick={() => deleteCategory(category.id)}>Sil</button>
+                  {editMode && editedCategory?.id === category.id ? (
+                    <div>
+                      <button
+                        className="btn btn-success"
+                        onClick={() => handleConfirm(category.id)}
+                      >
+                        Onayla
+                      </button>
+                      <button
+                        className="btn btn-secondary"
+                        onClick={() => setEditMode(false)}
+                      >
+                        İptal
+                      </button>
+                    </div>
+                  ) : (
+                    <div></div>
+                  )}
                 </div>
               </li>
             ))}
-
-            {/* Add more category list items here */}
           </ul>
         </div>
       </div>

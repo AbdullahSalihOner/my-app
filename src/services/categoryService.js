@@ -15,8 +15,12 @@ export class CategoryService {
     deleteCategory(categoryId) {
         return axios.delete("http://localhost:8080/category/delete/"+categoryId);
     }
-    updateCategory(categoryId) {
-        return axios.put("http://localhost:8080/category/update/",+ categoryId);
+    updateCategory(categoryId,updatedCategory) {
+        return axios.put("http://localhost:8080/category/update/"+ categoryId,{
+            categoryName: updatedCategory.name,
+            description: updatedCategory.description,
+            imageUrl: " ",
+        });
     }
     
 }
