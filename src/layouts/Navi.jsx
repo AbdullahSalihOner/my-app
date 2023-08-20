@@ -29,7 +29,7 @@ export default function Navi() {
       console.error("Error fetching user role:", error);
     }
   };
-
+   
   const redirectToLogin = () => {
     history.push(`/login`);
   };
