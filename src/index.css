@@ -10,3 +10,20 @@ body {
   /* Önerilen renk kodunu burada kullanabilirsiniz */
   font-family: Roboto, Helvetica, Arial, sans-serif;
 }
+
+/* index.css */
+/* Küçük ekranlar için stil ayarları */
+@media (max-width: 768px) {
+  body {
+    font-size: 16px; /* Örnek bir font büyüklüğü */
+  }
+  /* Diğer bileşenler için responsive stil ayarları burada eklenebilir */
+}
+
+/* Orta ve büyük ekranlar için stil ayarları */
+@media (min-width: 769px) {
+  body {
+    font-size: 18px; /* Örnek bir font büyüklüğü */
+  }
+  /* Diğer bileşenler için responsive stil ayarları burada eklenebilir */
+}

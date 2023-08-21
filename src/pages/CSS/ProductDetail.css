@@ -1,46 +1,57 @@
-.card-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-  }
-  
-  .card {
-    background-color: white;
-    border: 1px solid #e0e0e0;
-    border-radius: 10px;
-    padding: 20px;
-    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
-    transition: transform 0.2s;
-    width: 300px;
-    max-width: 100%;
-  }
-  
-  .card:hover {
-    transform: translateY(-5px);
-  }
-  
-  .card img {
-    max-width: 100%;
-    height: auto;
-  }
-  
-  .card-header {
-    font-size: 1.2rem;
-    margin-bottom: 10px;
-  }
-  
-  .card-description {
-    color: #555;
-    margin-bottom: 10px;
-  }
-  
-  .button-container {
-    display: flex;
-    justify-content: space-between;
-  }
-  
-  .button-container button {
-    flex: 1;
-    margin: 0 5px;
-  }
+/* styles.css */
+.center-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 70vh;
+}
+
+.product-card {
+  width: 150x; /* Örnek genişlik */
+}
+
+.image-container {
+  flex: 1;
+  padding: 10px;
+}
+
+.card-details {
+  flex: 2;
+  padding: 10px;
+}
+
+.card-header {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.card-description {
+  color: #777;
+}
+
+.ui.two.buttons {
+  margin-top: 10px;
+}
+
+/* Modal stilleri */
+.ReactModal__Overlay {
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.modal-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 90%;
+  max-height: 90%;
+}
+
+.modal-image {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  margin-bottom: 20px;
+}

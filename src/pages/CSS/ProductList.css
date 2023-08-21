@@ -80,3 +80,21 @@
     border-radius: 5px;
     cursor: pointer;
   }
+
+
+  @media (max-width: 767px) {
+    .card {
+      width: 100%;
+      margin-bottom: 20px;
+    }
+  
+    .card-footer {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  
+    .card-footer button {
+      margin-top: 10px;
+      margin-left: 0;
+    }
+  }

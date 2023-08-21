@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { ProductService } from "../services/productService";
 import CartService from "../services/cartService";
-import { Grid, GridColumn, Menu } from "semantic-ui-react";
+import { Container, Grid, GridColumn, Menu } from "semantic-ui-react";
 import WishListService from "../services/wishListService";
 import { useHistory } from "react-router-dom";
 import "../pages/CSS/ProductList.css";
@@ -125,6 +125,7 @@ export default function ProductList() {
   }, [selectedCategory]);
 
   return (
+    <Container>
     <div style={{ display: "flex" }}>
       <Col xs={3}>
         <Menu pointing vertical>
@@ -218,6 +219,7 @@ export default function ProductList() {
         </Grid>
       </Col>
     </div>
+    </Container>
   );
 }
 
