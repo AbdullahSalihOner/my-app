@@ -15,7 +15,7 @@ export default function Payment() {
       console.log('Ödeme işlemi gerçekleştirildi.');
     };
   
-    return (
+    return (        
         <div className="container">
         <div className="credit-card">
           <div className="credit-card-form">
