@@ -21,12 +21,16 @@ export default function LoginPage() {
       let userService = new UserService();
       const result = await userService.signIn({ email, password }); // Kısa yol
 
-      localStorage.setItem("id", result.data.userId);
-
-      
-     
+      if (result.data.userId > 0) {
+        localStorage.setItem("id", result.data.userId);
         history.push('/'); // Ana sayfaya yönlendir
         window.location.reload();
+      }
+      
+
+      throw new Error("Bilgiler yanlış");
+        
+        
       
     } catch (error) {
       console.log(error);
