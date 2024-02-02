@@ -80,6 +80,7 @@ The development process for the frontend of this E-commerce application involved
 - Created a user profile page for viewing and updating personal information.
 
 ![Admin Panel](images/12.png)
+![Admin Panel](images/13.png)
 
 
 
